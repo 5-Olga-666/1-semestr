@@ -1,62 +1,21 @@
-{
-  "nbformat": 4,
-  "nbformat_minor": 0,
-  "metadata": {
-    "colab": {
-      "provenance": [],
-      "authorship_tag": "ABX9TyMNqkz1QgTZkCxa1+0LBNpr"
-    },
-    "kernelspec": {
-      "name": "python3",
-      "display_name": "Python 3"
-    },
-    "language_info": {
-      "name": "python"
-    }
-  },
-  "cells": [
-    {
-      "cell_type": "code",
-      "execution_count": 9,
-      "metadata": {
-        "colab": {
-          "base_uri": "https://localhost:8080/"
-        },
-        "id": "KdkmbZmcx2V2",
-        "outputId": "680d9e83-589f-4491-e4a7-b45037eaa8e9"
-      },
-      "outputs": [
-        {
-          "output_type": "stream",
-          "name": "stdout",
-          "text": [
-            "Дерево несимметричное\n"
-          ]
-        }
-      ],
-      "source": [
-        "class Node:\n",
-        "    def __init__(self, key=None, left=None, right=None):\n",
-        "        self.key = key\n",
-        "        self.left = left\n",
-        "        self.right = right\n",
-        "\n",
-        "def simmetria(x,y):\n",
-        "    if x is None and y is None:\n",
-        "        return True\n",
-        "    return (x is not None and y is not None) and (x.key==y.key) and simmetria(x.left,y.right) and simmetria(x.right,y.left)\n",
-        "x = Node(15)\n",
-        "x.left = Node(10)\n",
-        "x.right = Node(20)\n",
-        "x.left.left = Node(8)\n",
-        "x.left.right = Node(12)\n",
-        "x.right.left = Node(16)\n",
-        "x.right.right = Node(25)\n",
-        "if simmetria(x,x):\n",
-        "    print(\"Дерево симметричное\")\n",
-        "else:\n",
-        "    print(\"Дерево несимметричное\")"
-      ]
-    }
-  ]
-}
+class Node:
+    def __init__(self, key=None, left=None, right=None):
+        self.key = key
+        self.left = left
+        self.right = right
+
+def simmetria(x,y):
+    if x is None and y is None:
+        return True
+    return (x is not None and y is not None) and (x.key==y.key) and simmetria(x.left,y.right) and simmetria(x.right,y.left)
+d = Node(15)
+d.left = Node(10)
+d.right = Node(10)
+d.left.left = Node(8)
+d.left.right = Node(12)
+d.right.left = Node(8)
+d.right.left = Node(8)
+if simmetria(d,d):
+    print("Дерево симметричное")
+else:
+    print("Дерево несимметричное")
